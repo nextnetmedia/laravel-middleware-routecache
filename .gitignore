@@ -3,7 +3,8 @@
 ########################
 .idea/*
 vendor/*
-
+.idea
+composer.lock
 
 ########################
 ## Environnement
