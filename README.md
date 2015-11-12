@@ -4,7 +4,7 @@
 Add to composer.json
 
 ```php
-"sid/laravel-simplecache-middleware":"dev-master"
+"rose1988c/laravel-routecache-middleware":"dev-master"
 ```
 
 
@@ -13,7 +13,7 @@ Register the service provider by adding in the provider section in config/app.ph
 ```php
 'providers' => [
     ...
-    Sid\SimpleCache\SimpleCacheServiceProvider::class
+    Rose1988c\RouteCache\RouteCacheServiceProvider::class
     ...
 ```
 
@@ -32,6 +32,11 @@ php artisan vendor:publish
 Add to Kernel.php
 
 ```php
-'cacheafter' => \Sid\SimpleCache\AfterCacheMiddleware::class,
-'cachebefore' => \Sid\SimpleCache\BeforeCacheMiddleware::class,
+'cache' => \Rose1988c\RouteCache\CacheMiddleware::class,
 ```
+
+````
+    route
+
+    middleware => 'cache:20'
+````
