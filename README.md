@@ -4,21 +4,11 @@ Add page cache with route.
 
 The cache is best not to write in the program logic inside, to find a cache is very tired, I suggest that the cache in the routing
 
-缓存最好不要写在程序逻辑里面，查找一个缓存非常累，我建议缓存放在路由里面, 使用方法如下：
+缓存放在路由里面, 使用方法如下：
 
 ````
     Route::group(['middleware' => 'cache:10'], function(){
         Route::get('/', 'HomeController@index');
-    });
-````
-
-Add page cache with route.
-
-页面缓存最好不要写在程序里面，程序逻辑里面查找一个缓存，去掉一个缓存，很费劲，用下面这种方式缓存页面
-
-````
-    Route::group(['middleware' => 'cache:10'], function(){
-        Route::get('/', 'WealthBalanceController@index'); // route - 财富平衡首页
     });
 ````
 
