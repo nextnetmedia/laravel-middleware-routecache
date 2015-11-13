@@ -64,9 +64,9 @@ Setting Route.php
 
 Flush Cache
 
-   flush        -> Flush Current Request Url
-   flush:ref    -> Flush Referer Url, Often used in AJAX
-   flush:url    -> Flush Appoint Url, Often used in Manage And Clean Appoint Url, Add arg `?flushurl=http://xxxxx`
+* flush        -> Flush Current Request Url
+* flush:ref    -> Flush Referer Url, Often used in AJAX
+* flush:url    -> Flush Appoint Url, Often used in Manage And Clean Appoint Url, Add arg `?flushurl=http://xxxxx`
 
 ````
     Route::group(['middleware' => 'flush'], function(){
