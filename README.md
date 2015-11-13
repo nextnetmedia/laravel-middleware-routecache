@@ -1,4 +1,4 @@
-## Laravel Page Cache Use Middleware
+## Laravel 5 Page Cache Use Middleware
 
 Add page cache with route.
 
