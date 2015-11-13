@@ -1,4 +1,16 @@
-## Laravel Page Cache Use Middleware
+## Laravel 5 Page Cache Use Middleware
+
+Add page cache with route.
+
+The cache is best not to write in the program logic inside, to find a cache is very tired, I suggest that the cache in the routing
+
+缓存最好不要写在程序逻辑里面，查找一个缓存非常累，我建议缓存放在路由里面, 使用方法如下：
+
+````
+    Route::group(['middleware' => 'cache:10'], function(){
+        Route::get('/', 'HomeController@index');
+    });
+````
 
 Add page cache with route.
 
@@ -11,6 +23,7 @@ Add page cache with route.
 ````
 
 ###Installation
+
 Add to composer.json
 
 ```php
@@ -47,6 +60,7 @@ Add to app\Http\Kernel.php
 
 ````
     'cache' => 'Rose1988c\RouteCache\CacheMiddleWare',
+    'flush' => 'Rose1988c\RouteCache\FlushMiddleWare',
 ````
 
 Setting Route.php
@@ -56,4 +70,29 @@ Setting Route.php
     Route::group(['middleware' => 'cache:10'], function(){
         Route::get('/', 'DemoController@index');
     });
+````
+
+Flush Cache
+
+* flush        -> Flush Current Request Url
+* flush:ref    -> Flush Referer Url, Often used in AJAX
+* flush:url    -> Flush Appoint Url, Often used in Manage And Clean Appoint Url, Add arg `?flushurl=http://xxxxx`
+
+````
+    Route::group(['middleware' => 'flush'], function(){
+        Route::any('switchP', 'HomeController@switchP');
+    });
+
+    Route::group(['middleware' => 'flush:ref'], function(){
+        Route::any('switchP', 'HomeController@switchP');
+    });
+
+    // test url: http://192.168.141.129:8084/cleanCache?flushurl=http://192.168.141.129:8084/wealthbalance
+    // result  : ok
+    Route::group(['middleware' => 'flush:url'], function(){
+        Route::any('cleanCache', function(){
+            echo 'hello, world!';
+        });
+    });
+
 ````

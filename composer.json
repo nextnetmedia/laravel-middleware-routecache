@@ -1,6 +1,6 @@
 {
   "name": "rose1988c/laravel-routecache-middleware",
-  "description": "Laravel Page Cache Use Middleware",
+  "description": "Laravel Page Cache Use Middleware With Route",
   "keywords": [
     "rose1988c",
     "laravel-routecache-middleware",

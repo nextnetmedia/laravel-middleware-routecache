@@ -1,12 +1,12 @@
 <?php
 /**
  * RouteCacheServiceProvider.php
- * 
+ *
  * @author: Cyw
  * @email: chenyunwen01@bianfeng.com
  * @created: 2015/11/12 20:13
- * @logs: 
- *       
+ * @logs:
+ *
  */
 namespace Rose1988c\RouteCache;
 
