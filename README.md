@@ -49,8 +49,8 @@ Publish the migration and the config file
 Add to app\Http\Kernel.php
 
 ````
-    'cache' => 'Rose1988c\RouteCache\CacheMiddleWare',
-    'flush' => 'Rose1988c\RouteCache\FlushMiddleWare',
+    'cache' => \Rose1988c\RouteCache\CacheMiddleWare::class,
+    'flush' => \Rose1988c\RouteCache\FlushMiddleWare::class,
 ````
 
 Setting Route.php
