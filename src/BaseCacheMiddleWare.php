@@ -42,6 +42,17 @@ class BaseCacheMiddleware
     }
 
     /**
+     * forget key
+     *
+     * @param $key
+     * @return bool
+     */
+    public function forget($key)
+    {
+        return $this->cache->forget($key);
+    }
+
+    /**
      * Store a key and value in cache for a particular amount of time
      * @param  string $key     Key to store by
      * @param  string $content Value to store
