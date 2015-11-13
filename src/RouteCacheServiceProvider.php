@@ -10,12 +10,8 @@
  */
 namespace Rose1988c\RouteCache;
 
-use Illuminate\Support\ServiceProvider;
-
-class RouteCacheServiceProvider extends ServiceProvider
+class RouteCacheServiceProvider
 {
-    protected $defer = false;
-
     /**
      * Register
      * @return void
@@ -23,7 +19,7 @@ class RouteCacheServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-        __DIR__.'/../resources/config/routecache.php' => config_path('routecache.php'),
+            __DIR__.'/../resources/config/routecache.php' => config_path('routecache.php'),
         ]);
     }
 }

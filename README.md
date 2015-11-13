@@ -35,8 +35,10 @@ Add to Kernel.php
 'cache' => \Rose1988c\RouteCache\CacheMiddleware::class,
 ```
 
+route.php
 ````
-    route
-
-    middleware => 'cache:20'
+    // set cache lifetime 10
+    Route::group(['middleware' => 'cache:10'], function(){
+        Route::get('/', 'DemoController@index');
+    });
 ````
