@@ -1,4 +1,4 @@
-## Laravel 4 Page Cache Use Middleware
+## Laravel 4 Page Cache
 
 Add page cache with route.
 
