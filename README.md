@@ -75,7 +75,7 @@ Flush Cache
 ````
 
 
-## develop
+## develop only
 
 ````
 php artisan workbench rose1988c/routecache --resources
