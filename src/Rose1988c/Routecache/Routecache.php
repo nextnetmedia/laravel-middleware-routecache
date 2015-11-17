@@ -1,5 +1,13 @@
 <?php
-
+/**
+ * Routecache.php
+ *
+ * @author: Cyw
+ * @email: chenyunwen01@bianfeng.com
+ * @created: 2015/11/17 10:36
+ * @logs:
+ *
+ */
 namespace Rose1988c\RouteCache;
 
 use Cache;
@@ -7,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Route;
 use Str;
+use Config;
 
 /**
  * Simple route caching
@@ -14,7 +23,7 @@ use Str;
  * USAGE:
  * Route::get('/', 'PagesController@index')->before('cache.fetch')->after('cache.set');
  */
-class CacheFilter
+class Routecache
 {
 
     /**
@@ -23,13 +32,10 @@ class CacheFilter
      * @param Route $route
      * @param Request $request
      */
-``
     public function fetch(Route $route, Request $request)
     {
-
-        if (Config::get('routecache.enabled')) {
+        if (Config::get('routecache::enabled')) {
             $key = $this->makeCacheKey($request->url());
-
             if (Cache::has($key)) return Cache::get($key);
         }
     }
@@ -43,10 +49,9 @@ class CacheFilter
      */
     public function put(Route $route, Request $request, Response $response)
     {
-        if (Config::get('routecache.enabled')) {
+        if (Config::get('routecache::enabled')) {
             $key = $this->makeCacheKey($request->url());
-
-            if (!Cache::has($key)) Cache::put($key, $response->getContent(), Config::get('routecache.lifetime'));
+            if (!Cache::has($key)) Cache::put($key, $response->getContent(), Config::get('routecache::lifetime'));
         }
     }
 
@@ -57,12 +62,22 @@ class CacheFilter
      * @param Request $request
      * @param Response $response
      */
-    public function flush(Route $route, Request $request, Response $response)
+    public function flush(Route $route, Request $request)
     {
-        if (Config::get('routecache.enabled')) {
-            // 默认删除上一次缓存
-            $key = $this->makeCacheKey($request->header('Referer'));
-            //$key = $this->makeCacheKey($request->url());
+        if (Config::get('routecache::enabled')) {
+
+            if ($request->query('flushurl') != false)
+            {
+                if (empty($request->query('flushurl')))
+                {
+                    $key = $this->makeCacheKey($request->url());
+                } else {
+                    $key = $this->makeCacheKey($request->query('flushurl'));
+                }
+            } else {
+                // 默认删除上一次缓存
+                $key = $this->makeCacheKey($request->header('Referer'));
+            }
             Cache::forget($key);
         }
     }
