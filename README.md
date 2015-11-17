@@ -37,7 +37,8 @@ Just in case
 Publish the migration and the config file
 
 ````
-    php artisan vendor:publish
+    // php artisan vendor:publish
+    php artisan config:publish  --path="vendor/rose1988c/laravel-routecache-middleware/src/config" rose1988c/routecache
 ````
 
 Add to app/filters.php
